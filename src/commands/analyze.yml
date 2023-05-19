@@ -19,7 +19,7 @@ parameters:
     type: env_var_name
   dd_site:
     description: DataDog site
-    default: datadoghq.com
+    default: datadog
     type: env_var_name
 steps:
   - run:
