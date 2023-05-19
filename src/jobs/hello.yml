@@ -1,5 +1,5 @@
 description: >
-  Sample description
+  Run Datadog analysis and upload results
 # What will this job do?
 
 executor: default
