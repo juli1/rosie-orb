@@ -35,7 +35,11 @@ cat << EOF
 #####      (###  ######(  ##  ##  #######  #      /#######*   (#######,   .#####
 ################################################################################
 EOF
-
+export DD_API_KEY=${PARAM_API_KEY}
+export DD_APP_KEY=${PARAM_APP_KEY}
+export DD_ENV=${PARAM_DD_ENV}
+export DD_SERVICE=${PARAM_DD_SERVICE}
+export DD_SITE=${PARAM_DD_SITE}
 echo "DD_API_KEY: ${!DD_API_KEY}"
 echo "DD_APP_KEY: $DD_APP_KEY"
 echo "DD_ENV:     $DD_ENV"

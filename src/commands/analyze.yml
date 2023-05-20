@@ -5,7 +5,7 @@ parameters:
     default: DD_APP_KEY
     type: env_var_name
   dd_api_key:
-    default: DD_API_KEY2
+    default: DD_API_KEY
     type: env_var_name
   dd_env:
     default: DD_ENV
@@ -18,11 +18,12 @@ parameters:
     type: env_var_name
 steps:
   - run:
-      environment:
-        DD_APP_KEY: <<parameters.dd_app_key>>
-        DD_API_KEY: <<parameters.dd_api_key>>
-        DD_ENV: <<parameters.dd_env>>
-        DD_SERVICE: <<parameters.dd_service>>
-        DD_SITE: <<parameters.dd_site>>
       name: Datadog analysis
       command: <<include(scripts/analyze.sh)>>
+      environment:
+        PARAM_DD_APP_KEY: <<parameters.dd_app_key>>
+        PARAM_DD_API_KEY: <<parameters.dd_api_key>>
+        PARAM_DD_ENV: <<parameters.dd_env>>
+        PARAM_DD_SERVICE: <<parameters.dd_service>>
+        PARAM_DD_SITE: <<parameters.dd_site>>
+
