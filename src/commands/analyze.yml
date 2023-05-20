@@ -3,24 +3,19 @@ description: >
 parameters:
   dd_app_key:
     description: DataDog App Key
-    default: DD_APP_KEY
-    type: env_var_name
+    type: string
   dd_api_key:
     description: DataDog API Key
-    default: DD_API_KEY
-    type: env_var_name
+    type: string
   dd_env:
     description: DataDog environment key
-    default: DD_ENV
-    type: env_var_name
+    type: string
   dd_service:
     description: DataDog service
-    default: DD_SERVICE
-    type: env_var_name
+    type: string
   dd_site:
     description: DataDog site
-    default: DD_SITE
-    type: env_var_name
+    type: string
 steps:
   - run:
       environment:
