@@ -44,11 +44,11 @@ sudo apt-get update >/dev/null 2>&1
 sudo apt-get install --yes openjdk-17-jdk >/dev/null 2>&1
 sudo apt-get install --yes unzip >/dev/null 2>&1
 
-DD_APP_KEY=<< parameters.dd_app_key >>
-DD_API_KEY=<< parameters.dd_api_key >>
-DD_ENV=<< parameters.dd_env >>
-DD_SERVICE=<< parameters.dd_service >>
-DD_SITE=<< parameters.dd_site >>
+#DD_APP_KEY=<< parameters.dd_app_key >>
+#DD_API_KEY=<< parameters.dd_api_key >>
+#DD_ENV=<< parameters.dd_env >>
+#DD_SERVICE=<< parameters.dd_service >>
+#DD_SITE=<< parameters.dd_site >>
 
 ########################################################
 # check variables
