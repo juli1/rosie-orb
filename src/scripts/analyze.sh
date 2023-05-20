@@ -88,9 +88,9 @@ CLI_LOCATION=$TOOL_DIRECTORY/cli-1.0-SNAPSHOT/bin/cli
 # datadog-ci stuff
 ########################################################
 echo "Installing 'datadog-ci'"
-npm install -g @datadog/datadog-ci || exit 1
+sudo npm install -g @datadog/datadog-ci || exit 1
 
-DATADOG_CLI_PATH=/usr/bin/datadog-ci
+DATADOG_CLI_PATH=/usr/local/bin/datadog-ci
 
 # Check that datadog-ci was installed
 if [ ! -x $DATADOG_CLI_PATH ]; then
@@ -121,7 +121,7 @@ echo "Done: will output results at $OUTPUT_FILE"
 ########################################################
 
 echo "Starting a static analysis"
-$CLI_LOCATION --directory "${GITHUB_WORKSPACE}" -t true -o "$OUTPUT_FILE" -f sarif || exit 1
+$CLI_LOCATION --directory "${CIRCLE_WORKING_DIRECTORY}" -t true -o "$OUTPUT_FILE" -f sarif || exit 1
 echo "Done"
 
 
