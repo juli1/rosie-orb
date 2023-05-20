@@ -42,6 +42,10 @@ echo "DD_ENV:     $DD_ENV"
 echo "DD_SERVICE: $DD_SERVICE"
 echo "DD_SITE:    ${!DD_SITE}"
 
+DD_SITE_VALUE=$(circleci env subst "$DD_SITE")
+echo "DD_SITE_VALUE: $DD_SITE_VALUE"
+
+
 ########################################################
 # install Java
 ########################################################
