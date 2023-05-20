@@ -6,8 +6,15 @@ description: >
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    datadog-static-analysis: juli1/rosie-orb@dev:alpha
+  jobs:
+    analyze:
+      docker:
+        - image: cimg/node:current
+      steps:
+        - checkout
+        - datadog-static-analysis/analyze
   workflows:
-    use-my-orb:
+    main:
       jobs:
-        - <orb-name>/<job-name>
+        - analyze
