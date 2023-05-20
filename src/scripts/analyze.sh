@@ -88,7 +88,7 @@ CLI_LOCATION=$TOOL_DIRECTORY/cli-1.0-SNAPSHOT/bin/cli
 # datadog-ci stuff
 ########################################################
 echo "Installing 'datadog-ci'"
-sudo npm install -g @datadog/datadog-ci || exit 1
+sudo /usr/local/bin/npm install -g @datadog/datadog-ci || exit 1
 
 DATADOG_CLI_PATH=/usr/local/bin/datadog-ci
 
