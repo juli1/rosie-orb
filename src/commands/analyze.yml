@@ -1,9 +1,5 @@
 description: >
-  Run Datadog analysis and upload results
-# What will this job do?
-
-executor: default
-
+  This command analyzes the code and upload results to DataDog.
 parameters:
   dd_app_key:
     description: DataDog App Key
@@ -26,9 +22,12 @@ parameters:
     default: datadog
     type: env_var_name
 steps:
-  - analyze:
-      dd_app_key: << parameters.dd_app_key >>
-      dd_api_key: << parameters.dd_api_key >>
-      dd_env: << parameters.dd_env >>
-      dd_service: << parameters.dd_service >>
-      dd_site: << parameters.dd_site >>
+  - run:
+      environment:
+        DD_APP_KEY: <<parameters.dd_app_key>>
+        DD_API_KEY: <<parameters.dd_api_key>>
+        DD_ENV: <<parameters.dd_env>>
+        DD_SERVICE: <<parameters.dd_service>>
+        DD_SITE: <<parameters.dd_site>>
+      name: Datadog analysis
+      command: <<include(scripts/analyze.sh)>>

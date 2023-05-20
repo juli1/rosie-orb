@@ -5,8 +5,7 @@ docker:
   - image: 'cimg/node:<<parameters.tag>>'
 parameters:
   tag:
-    default: lts
+    default: current
     description: >
-      Pick a specific cimg/node image variant:
-      https://hub.docker.com/r/cimg/node/tags
+      The latest version of node available.
     type: string
