@@ -4,12 +4,49 @@
 [![CircleCI Build Status](https://circleci.com/gh/juli1/rosie-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/juli1/rosie-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/juli1/rosie-orb.svg)](https://circleci.com/developer/orbs/orb/juli1/rosie-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/juli1/rosie-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 
+This is the ORB for DataDog Static Analysis solution. Trigger a code analysis from CircleCI
+and store the results in Datadog.
 
-A project template for Orbs.
+## Configuration
 
-This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
 
-_**Edit this area to include a custom title and description.**_
+### Environment configuration
+
+Add the following environment variables to your project:
+
+ - `DD_APP_KEY`: Datadog application key
+ - `DD_API_KEY`: Datadog API key
+ - `DD_ENV`: Datadog environment to store the results
+ - `DD_SERVICE`: Datadog corresponding service
+ - `DD_SITE`: The site to use to use datadog. See [here](https://docs.datadoghq.com/getting_started/site/) for more information (the default is `datadoghq.com`) 
+
+![Token](doc/circleci-secrets.jpeg)
+
+
+### ORB configuration
+
+There is an example of configuration to trigger the ORB. The essential parts are:
+ - checkout the code
+ - call the Datadog static analyzer
+
+
+```yaml
+version: '2.1'
+orbs:
+  datadog-static-analysis: juli1/rosie-orb@dev:alpha
+jobs:
+  build:
+    docker:
+      - image: cimg/node:current
+    steps:
+      - checkout
+      - datadog-static-analysis/analyze
+workflows:
+  main:
+    jobs:
+      - build
+```
+
 
 ---
 
