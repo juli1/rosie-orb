@@ -40,8 +40,9 @@ EOF
 # install Java
 ########################################################
 
-apt-get update
-apt-get install --yes openjdk-17-jdk
+sudo apt-get update
+sudo apt-get install --yes openjdk-17-jdk
+sudo apt-get install --yes unzip
 
 
 ########################################################
