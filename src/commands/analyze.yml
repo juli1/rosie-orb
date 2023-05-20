@@ -1,29 +1,9 @@
 description: >
   This command analyzes the code and upload results to DataDog.
-parameters:
-  app_key:
-    default: DD_APP_KEY
-    type: env_var_name
-  api_key:
-    default: DD_API_KEY
-    type: env_var_name
-  env:
-    default: DD_ENV
-    type: env_var_name
-  service:
-    default: DD_SERVICE
-    type: env_var_name
-  site:
-    default: DD_SITE
-    type: env_var_name
+
 steps:
   - run:
       name: Datadog analysis
       command: <<include(scripts/analyze.sh)>>
-      environment:
-        PARAM_DD_APP_KEY: <<parameters.app_key>>
-        PARAM_DD_API_KEY: <<parameters.api_key>>
-        PARAM_DD_ENV: <<parameters.env>>
-        PARAM_DD_SERVICE: <<parameters.service>>
-        PARAM_DD_SITE: <<parameters.site>>
+
 
