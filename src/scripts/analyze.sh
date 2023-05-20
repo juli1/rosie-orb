@@ -44,6 +44,7 @@ sudo apt-get update >/dev/null 2>&1
 sudo apt-get install --yes openjdk-17-jdk >/dev/null 2>&1
 sudo apt-get install --yes unzip >/dev/null 2>&1
 
+SONAR_TOKEN=$<<parameters.sonar_token_variable_name>>
 
 ########################################################
 # check variables
