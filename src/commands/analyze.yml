@@ -1,5 +1,7 @@
 description: >
   This command analyzes the code and upload results to DataDog.
+parameters: []
+
 steps:
   - run:
       name: Datadog analysis
