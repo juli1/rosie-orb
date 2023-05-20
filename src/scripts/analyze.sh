@@ -46,9 +46,18 @@ echo "DD_ENV:     $DD_ENV"
 echo "DD_SERVICE: $DD_SERVICE"
 echo "DD_SITE:    ${DD_SITE}"
 
+
+export PARAM_API_KEY=${PARAM_API_KEY}
+export DD_APP_KEY=${PARAM_APP_KEY}
+export DD_ENV=${PARAM_DD_ENV}
+export DD_SERVICE=${PARAM_DD_SERVICE}
+export DD_SITE=${PARAM_DD_SITE}
+
 env
 
-DD_SITE_VALUE=$(circleci env subst "$PARAM_DD_SITE")
+export DD_SITE=$(circleci env subst "$PARAM_DD_SITE")
+export DD_API_KEY=$(circleci env subst "$PARAM_DD_API_KEY")
+export DD_APP_KEY=$(circleci env subst "$PARAM_DD_APP_KEY")
 echo "DD_SITE_VALUE: $DD_SITE_VALUE"
 
 
@@ -132,17 +141,17 @@ fi
 
 OUTPUT_FILE="$OUTPUT_DIRECTORY/output.sarif"
 
-echo "done: will output results at $OUTPUT_FILE"
+echo "done: will output results at ${OUTPUT_FILE}"
 
 ########################################################
 # execute the tool and upload results
 ########################################################
 
 echo -n "Starting a static analysis ..."
-$CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "$OUTPUT_FILE" -f sarif || exit 1
+$CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "${OUTPUT_FILE}" -f sarif || exit 1
 echo "done"
 
 
 echo -n "Uploading results to Datadog ..."
-${DATADOG_CLI_PATH} sarif upload "$OUTPUT_FILE" --service "$DD_SERVICE" --env "$DD_ENV"
+${DATADOG_CLI_PATH} sarif upload "${OUTPUT_FILE}" --service "${DD_SERVICE}" --env "$DD_ENV"
 echo "Done"
