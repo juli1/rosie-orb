@@ -40,9 +40,9 @@ EOF
 # install Java
 ########################################################
 
-sudo apt-get update
-sudo apt-get install --yes openjdk-17-jdk
-sudo apt-get install --yes unzip
+sudo apt-get update >/dev/null 2>&1
+sudo apt-get install --yes openjdk-17-jdk >/dev/null 2>&1
+sudo apt-get install --yes unzip >/dev/null 2>&1
 
 
 ########################################################
@@ -67,6 +67,8 @@ if [ -z "$DD_SERVICE" ]; then
     echo "DD_SERVICE not set. Please set this variable and try again."
     exit 1
 fi
+
+PROJECT_ROOT=$(pwd)
 
 ########################################################
 # static analyzer tool stuff
@@ -121,7 +123,7 @@ echo "Done: will output results at $OUTPUT_FILE"
 ########################################################
 
 echo "Starting a static analysis"
-$CLI_LOCATION --directory "${CIRCLE_WORKING_DIRECTORY}" -t true -o "$OUTPUT_FILE" -f sarif || exit 1
+$CLI_LOCATION --directory "${PROJECT_ROOT}" -t true -o "$OUTPUT_FILE" -f sarif || exit 1
 echo "Done"
 
 
