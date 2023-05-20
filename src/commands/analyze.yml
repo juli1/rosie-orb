@@ -1,9 +1,5 @@
 description: >
   This command analyzes the code and upload results to DataDog.
-parameters:
-  site:
-    default: DD_SITE
-    type: env_var_name
 steps:
   - run:
       name: Datadog analysis
