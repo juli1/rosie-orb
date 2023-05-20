@@ -36,11 +36,11 @@ cat << EOF
 ################################################################################
 EOF
 
-echo "DD_API_KEY: $DD_API_KEY"
+echo "DD_API_KEY: ${!DD_API_KEY}"
 echo "DD_APP_KEY: $DD_APP_KEY"
 echo "DD_ENV:     $DD_ENV"
 echo "DD_SERVICE: $DD_SERVICE"
-echo "DD_SITE:    $DD_SITE"
+echo "DD_SITE:    ${!DD_SITE}"
 
 ########################################################
 # install Java
